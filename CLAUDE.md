@@ -32,11 +32,11 @@ npm run lint
   - `globals.css` - Tailwind CSS imports
 
 - **`/components`** - Shared UI components
-  - `Hero1.tsx` - Client component with navigation and hero section, supports `theme` prop ("light" | "dark")
+  - `Hero1.tsx` - Server component with navigation and hero section, supports `theme` prop ("light" | "dark")
   - `Hero2.tsx` - Additional hero variant (currently minimal)
 
 - **`/features`** - Feature-based modules (organized by feature domain)
-  - `Hero/` - Hero-specific sub-components (e.g., MobileHamburger.tsx)
+  - `Hero/` - Hero-specific client-side sub-components (e.g., MobileMenu.tsx handles mobile navigation state)
 
 ### Key Configuration
 
@@ -47,7 +47,10 @@ npm run lint
 
 ### Component Patterns
 
-- **Client Components**: Use `"use client"` directive for interactivity (e.g., Hero1.tsx with Headless UI Dialog)
+- **Server/Client Component Separation**:
+  - Server components (e.g., Hero1.tsx) handle static rendering and data fetching
+  - Client components (e.g., MobileMenu.tsx in `/features/Hero`) handle interactivity with `"use client"` directive
+  - Extract stateful UI elements into separate client components to keep main components as server components
 - **Theming**: Components accept theme props to toggle between light/dark color schemes
 - **Headless UI**: Dialog and navigation components from `@headlessui/react`
 - **Icons**: Heroicons v2 (`@heroicons/react`) for UI icons

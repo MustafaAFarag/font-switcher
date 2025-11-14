@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Dialog, DialogPanel } from "@headlessui/react";
-import Image from "next/image";
 import { Navigation } from "@/Models/NavigationModel";
 
 type MobileMenuProps = {
@@ -47,7 +46,7 @@ export default function MobileMenu({ isDark, navigation }: MobileMenuProps) {
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <Image
+              <img
                 alt=""
                 src={
                   isDark
@@ -55,8 +54,6 @@ export default function MobileMenu({ isDark, navigation }: MobileMenuProps) {
                     : "https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
                 }
                 className="h-8 w-auto"
-                width={32}
-                height={32}
               />
             </a>
             <button
@@ -71,7 +68,11 @@ export default function MobileMenu({ isDark, navigation }: MobileMenuProps) {
             </button>
           </div>
           <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10">
+            <div
+              className={`-my-6 divide-y ${
+                isDark ? "divide-white/10" : "divide-gray-500/10"
+              }`}
+            >
               <div className="space-y-2 py-6">
                 {navigation.map((item) => (
                   <a
@@ -79,7 +80,7 @@ export default function MobileMenu({ isDark, navigation }: MobileMenuProps) {
                     href={item.href}
                     className={`-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold ${
                       isDark
-                        ? "text-white hover:bg-gray-800"
+                        ? "text-white hover:bg-white/5"
                         : "text-gray-900 hover:bg-gray-50"
                     }`}
                   >
@@ -92,7 +93,7 @@ export default function MobileMenu({ isDark, navigation }: MobileMenuProps) {
                   href="#"
                   className={`-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold ${
                     isDark
-                      ? "text-white hover:bg-gray-800"
+                      ? "text-white hover:bg-white/5"
                       : "text-gray-900 hover:bg-gray-50"
                   }`}
                 >
