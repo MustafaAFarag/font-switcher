@@ -1,3 +1,9 @@
+import Hero1 from "@/components/Hero1";
+
 export default function Home() {
-  return <div>Hello world</div>;
+  return (
+    <main>
+      <Hero1 theme="light" />
+    </main>
+  );
 }
